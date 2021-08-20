@@ -1,0 +1,40 @@
+{
+  "name": "nodejs-assessment",
+  "version": "1.0.0",
+  "description": "An assessment built with Node.js which interacts with an insurance API REST's endpoints to deliver data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiously/nodejs-assessment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergiously/nodejs-assessment/issues"
+  },
+  "homepage": "https://github.com/sergiously/nodejs-assessment#readme",
+  "engines": {
+    "node": ">=14.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "got": "^11.8.2",
+    "helmet": "^4.6.0"
+  }
+}

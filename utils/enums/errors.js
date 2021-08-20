@@ -1,0 +1,8 @@
+// OAuth2 error logic
+exports.AUTH_MISSING_HEADER =   "AUTH_MISSING_HEADER";
+exports.AUTH_INVALID_FORMAT =   "AUTH_INVALID_BEARER_TOKEN_FORMAT";
+exports.AUTH_GENERIC_ERROR  =   "AUTH_GENERIC_ERROR";
+
+// Business logic errors
+exports.INVALID_FIELDS      = "INVALID_FIELDS";
+exports.UNAUTHORIZED        = "UNAUTHORIZED";
