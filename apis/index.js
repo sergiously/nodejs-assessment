@@ -1,8 +1,8 @@
+require('dotenv').config();
 const got = require('got');
-const config = require('dotenv').config;
 
 exports.HerokuLogin = async (id, secret) => {
-    const response = await got.post(config.HEROKU_API_URL + "login", {
+    const response = await got.post(process.env.HEROKU_API_URL + "login", {
 		json: {
 			client_id: id,
             client_secret: secret
@@ -14,7 +14,7 @@ exports.HerokuLogin = async (id, secret) => {
 }
 
 exports.GetClients = async (bearerToken) => {
-    const response = await got(config.HEROKU_API_URL + "clients", {
+    const response = await got(process.env.HEROKU_API_URL + "clients", {
 		headers: {
             "Authorization": bearerToken
         },
@@ -25,7 +25,7 @@ exports.GetClients = async (bearerToken) => {
 }
 
 exports.GetPolicies = async (bearerToken) => {
-    const response = await got(config.HEROKU_API_URL + "policies", {
+    const response = await got(process.env.HEROKU_API_URL + "policies", {
 		headers: {
             "Authorization": bearerToken
         },
