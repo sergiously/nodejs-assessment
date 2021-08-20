@@ -1,10 +1,10 @@
 // OAuth2 error logic
-exports.AUTH_MISSING_HEADER      =   "AUTH_MISSING_HEADER";
-exports.AUTH_INVALID_FORMAT      =   "AUTH_INVALID_BEARER_TOKEN_FORMAT";
-exports.AUTH_INVALID_TOKEN       =   "AUTH_INVALID_TOKEN";
-exports.AUTH_GENERIC_ERROR       =   "AUTH_GENERIC_ERROR";
-exports.AUTH_INVALID_CREDENTIALS = "AUTH_INVALID_CREDENTIALS"
+exports.AUTH_MISSING_HEADER      = "Authorization header is required";
+exports.AUTH_INVALID_FORMAT      = "Token must be Bearer type";
+exports.AUTH_INVALID_TOKEN       = "Invalid token";
+exports.AUTH_GENERIC_ERROR       = "AUTH_GENERIC_ERROR";
+exports.AUTH_INVALID_CREDENTIALS = "Invalid credentials";
 
 // Business logic errors
-exports.INVALID_FIELDS      = "INVALID_FIELDS";
-exports.UNAUTHORIZED        = "UNAUTHORIZED";
+exports.INVALID_FIELDS           = "INVALID_FIELDS";
+exports.UNAUTHORIZED             = "Unauthorized";

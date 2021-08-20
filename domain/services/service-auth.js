@@ -1,9 +1,9 @@
 require('dotenv').config();
-const jwt               = require('jsonwebtoken');
+const jwt                = require('jsonwebtoken');
 
-const apis              = require('../../apis');
-const httpStatusCodes_  = require('../../utils/enums/httpStatusCodes');
-const errors_           = require('../../utils/enums/errors');
+const externalRepository = require('../external_services/service-repository');
+const httpStatusCodes_   = require('../../utils/enums/httpStatusCodes');
+const errors_            = require('../../utils/enums/errors');
 
 const jwtOptions = {
 	expiresIn: process.env.JWT_EXPIRATION_TIME,
@@ -22,13 +22,28 @@ exports.Login = async (req, res, next) => {
             });
         }
 
-        if (inputUsername !== process.env.USERNAME && inputPassword !== process.env.PASSWORD) {
+        const clients = await externalRepository.GetClients();
+
+        if ((inputUsername !== process.env.USERNAME || inputPassword !== process.env.PASSWORD) && (inputUsername !== process.env.ADMIN_USERNAME || inputPassword !== process.env.ADMIN_PASSWORD)) {
             return res.status(httpStatusCodes_.CODE_UNAUTHORIZED).json({
                 code: httpStatusCodes_.CODE_UNAUTHORIZED,
                 message: errors_.AUTH_INVALID_CREDENTIALS
             });
         }
 
+        let userRole = '';
+        switch (inputUsername) {
+            case process.env.USERNAME:
+                userRole = 'user';
+                break;
+            case process.env.ADMIN_USERNAME:
+                userRole = 'admin';
+                break;
+            default:
+                userRole = 'user';
+        }
+
+        req.body.role = userRole;
         const token = jwt.sign(req.body, process.env.JWT_SECRET, jwtOptions);
 
         return res.status(httpStatusCodes_.CODE_OK).json({

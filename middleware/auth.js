@@ -22,12 +22,18 @@ module.exports = async (req, res, next) => {
 
     const { authorization } = req.headers;
 
-    if (!authorization) throw new Error(errors_.AUTH_MISSING_HEADER);
+    if (!authorization) {
+      throw new Error(errors_.AUTH_MISSING_HEADER);
+    }
 
     const [authType, token] = authorization.trim().split(' ');
-    if (authType !== 'Bearer') throw new Error(errors_.AUTH_INVALID_FORMAT);
+    if (authType !== 'Bearer') {
+      throw new Error(errors_.AUTH_INVALID_FORMAT);
+    }
 
-    if (authorization.substring(0, 7) === 'Bearer ') authorization = authorization.slice(7);
+    if (authorization.substring(0, 7) === 'Bearer ') {
+      authorization = authorization.slice(7);
+    }
 
     req.token = jwt.verify(authorization, process.env.JWT_SECRET, jwtOptions);
 
